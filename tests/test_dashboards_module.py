@@ -33,11 +33,11 @@ def _install_streamlit_stub():
 
 _install_streamlit_stub()
 
-from script.python import config as config_module  # noqa: E402
+from package.python import config as config_module  # noqa: E402
 
 sys.modules['config'] = config_module
 
-from script.python import dashboards  # noqa: E402
+from package.python import dashboards  # noqa: E402
 
 
 def test_load_data_returns_none_when_missing(tmp_path, monkeypatch):

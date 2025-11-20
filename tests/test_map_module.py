@@ -1,6 +1,6 @@
 import pandas as pd
 
-from script.python import map as mapper
+from package.python import map as mapper
 
 
 def test_get_columns_from_csv(tmp_path, monkeypatch):

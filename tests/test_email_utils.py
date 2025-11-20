@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from script.python import email_utils as email
+from package.python import email_utils as email
 
 
 def test_parse_recipients_supports_multiple_separators():

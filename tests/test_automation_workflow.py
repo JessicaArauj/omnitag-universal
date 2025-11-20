@@ -20,5 +20,5 @@ def test_automation_workflow_contains_expected_steps() -> None:
     assert 'actions/setup-python@v5' in content, 'Python setup action missing'
     assert 'pip install -r requirements.txt' in content, 'dependency installation step missing'
     assert (
-        'python -m script.python.automation' in content
+        'python -m package.python.automation' in content
     ), 'automation pipeline invocation missing'

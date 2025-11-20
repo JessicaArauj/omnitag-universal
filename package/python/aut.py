@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import shutil
 from pathlib import Path
 
@@ -208,6 +209,18 @@ def clear_hf_cache(cache_dir: str | Path) -> None:
         print(f'Failed to remove Hugging Face cache ({cache_path}): {exc}')
 
 
+def get_hf_cache_dir() -> Path:
+    """Return the Hugging Face cache directory using env hints or defaults."""
+    env_cache = (
+        os.environ.get('HF_HOME')
+        or os.environ.get('HUGGINGFACE_HUB_CACHE')
+        or os.environ.get('TRANSFORMERS_CACHE')
+    )
+    if env_cache:
+        return Path(env_cache).expanduser()
+    return Path.home() / '.cache' / 'huggingface'
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description='Feasibility categorization pipeline.',
@@ -243,7 +256,7 @@ def main() -> None:
         run_pipeline(args.input_file)
     else:
         process_chunk_directory(args.chunk_dir, args.output_dir)
-    clear_hf_cache(Path(r'C:\Users\Jessi\.cache\huggingface'))
+    clear_hf_cache(get_hf_cache_dir())
 
 
 if __name__ == '__main__':
