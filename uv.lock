@@ -155,6 +155,7 @@ numpy==1.26.4
     #   scipy
     #   seaborn
     #   streamlit
+    #   torchvision
     #   transformers
     #   wordcloud
 openai==1.109.1
@@ -182,6 +183,7 @@ pillow==12.0.0
     # via
     #   matplotlib
     #   streamlit
+    #   torchvision
     #   wordcloud
 pluggy==1.6.0
     # via pytest
@@ -208,7 +210,14 @@ pygments==2.19.2
 pyparsing==3.2.5
     # via matplotlib
 pytest==9.0.1
+    # via
+    #   -r requirements.txt
+    #   pytest-json-report
+    #   pytest-metadata
+pytest-json-report==1.5.0
     # via -r requirements.txt
+pytest-metadata==3.1.1
+    # via pytest-json-report
 python-dateutil==2.9.0.post0
     # via
     #   matplotlib
@@ -270,10 +279,13 @@ tokenizers==0.22.1
     # via transformers
 toml==0.10.2
     # via streamlit
-torch==2.9.1
+torch==2.2.2
     # via
     #   -r requirements.txt
     #   accelerate
+    #   torchvision
+torchvision==0.17.2
+    # via -r requirements.txt
 tornado==6.5.2
     # via streamlit
 tqdm==4.67.1

@@ -1,6 +1,6 @@
 from sklearn.feature_extraction.text import CountVectorizer
 
-from script.python import modeling_utils as mu
+from package.python import modeling_utils as mu
 
 
 def test_build_pipeline_returns_expected_steps():

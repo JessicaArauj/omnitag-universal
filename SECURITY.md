@@ -9,7 +9,7 @@ This repository is delivered as source code. Apply the latest commits before dep
 ### Reporting a vulnerability
 
 1. **Do not** open public issues for suspected vulnerabilities.
-2. Report privately via the GitHub Security Advisory workflow or email `security@aut-tag-llm.org`.
+2. Report privately via the GitHub Security Advisory workflow or email `security@OmniTag Universal.org`.
 3. Provide:
    - A detailed description of the issue and potential impact.
    - Steps to reproduce, including sample data if possible (redacted/pseudonymized).

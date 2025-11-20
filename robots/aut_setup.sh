@@ -24,24 +24,15 @@ else
   echo "Virtual environment already exists at ${VENV_DIR}."
 fi
 
-if [ -d "${VENV_DIR}/Scripts" ]; then
-  ACTIVATE_SCRIPT="${VENV_DIR}/Scripts/activate"
-  if [ -x "${VENV_DIR}/Scripts/python.exe" ]; then
-    VENV_PYTHON="${VENV_DIR}/Scripts/python.exe"
-  else
-    VENV_PYTHON="${VENV_DIR}/Scripts/python"
-  fi
-else
-  ACTIVATE_SCRIPT="${VENV_DIR}/bin/activate"
-  VENV_PYTHON="${VENV_DIR}/bin/python"
-fi
-
-if [ ! -x "${VENV_PYTHON}" ] || ! "${VENV_PYTHON}" -V >/dev/null 2>&1; then
-  echo "Existing virtual environment is invalid or python executable missing."
-  echo "Recreating ${VENV_DIR}..."
-  rm -rf "${VENV_DIR}"
-  create_venv
-  if [ -d "${VENV_DIR}/Scripts" ]; then
+detect_venv_paths() {
+  if [ -d "${VENV_DIR}/Package" ]; then
+    ACTIVATE_SCRIPT="${VENV_DIR}/Package/activate"
+    if [ -x "${VENV_DIR}/Package/python.exe" ]; then
+      VENV_PYTHON="${VENV_DIR}/Package/python.exe"
+    else
+      VENV_PYTHON="${VENV_DIR}/Package/python"
+    fi
+  elif [ -d "${VENV_DIR}/Scripts" ]; then
     ACTIVATE_SCRIPT="${VENV_DIR}/Scripts/activate"
     if [ -x "${VENV_DIR}/Scripts/python.exe" ]; then
       VENV_PYTHON="${VENV_DIR}/Scripts/python.exe"
@@ -52,6 +43,16 @@ if [ ! -x "${VENV_PYTHON}" ] || ! "${VENV_PYTHON}" -V >/dev/null 2>&1; then
     ACTIVATE_SCRIPT="${VENV_DIR}/bin/activate"
     VENV_PYTHON="${VENV_DIR}/bin/python"
   fi
+}
+
+detect_venv_paths
+
+if [ ! -x "${VENV_PYTHON}" ] || ! "${VENV_PYTHON}" -V >/dev/null 2>&1; then
+  echo "Existing virtual environment is invalid or python executable missing."
+  echo "Recreating ${VENV_DIR}..."
+  rm -rf "${VENV_DIR}"
+  create_venv
+  detect_venv_paths
 fi
 
 if [ -f "${ACTIVATE_SCRIPT}" ]; then
@@ -63,7 +64,7 @@ else
 fi
 
 echo "Upgrading pip..."
-"${VENV_PYTHON}" -m pip install -q --upgrade pip
+"${VENV_PYTHON}" -m pip install  --upgrade pip
 
 echo "Clearing pip cache..."
 if "${VENV_PYTHON}" -m pip cache purge >/dev/null 2>&1; then
@@ -73,11 +74,13 @@ else
 fi
 
 echo "Installing dependencies from requirements.txt..."
-"${VENV_PYTHON}" -m pip install --no-cache-dir -q -r requirements.txt
+"${VENV_PYTHON}" -m pip install --no-cache-dir  -r requirements.txt
 
 echo
 echo "Virtual environment is ready."
-if [ -d "${VENV_DIR}/Scripts" ]; then
+if [ -d "${VENV_DIR}/Package" ]; then
+  echo "Activate it with: ${VENV_DIR}/Package/activate"
+elif [ -d "${VENV_DIR}/Scripts" ]; then
   echo "Activate it with: ${VENV_DIR}/Scripts/activate"
 else
   echo "Activate it with: source ${VENV_DIR}/bin/activate"

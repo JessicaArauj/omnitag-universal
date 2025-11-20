@@ -1,6 +1,6 @@
 import pandas as pd
 
-from script.python import preprocessing_utils as prep
+from package.python import preprocessing_utils as prep
 
 
 class _DummyStemmer:

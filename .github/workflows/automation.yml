@@ -28,4 +28,4 @@ jobs:
 
       - name: Run automation pipeline
         run: |
-          python -m script.python.automation
+          python -m package.python.automation

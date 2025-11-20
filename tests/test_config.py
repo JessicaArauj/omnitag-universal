@@ -1,4 +1,4 @@
-from script.python import config
+from package.python import config
 
 
 def test_parse_text_columns_prefers_multi_value(monkeypatch):

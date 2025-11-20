@@ -1,0 +1,23 @@
+{
+  "text_columns": [
+    "Procedência da Coleta",
+    "Ponto de Coleta",
+    "Grupo de parâmetros",
+    "Parâmetro (demais parâmetros)",
+    "LD",
+    "LQ",
+    "Resultado"
+  ],
+  "label_column": "Grupo de parâmetros",
+  "test_size": 0.2,
+  "backend": "local",
+  "local_model": "unknown",
+  "source_chunks": [
+    "output\\chunks\\vigilancia_demais_parametros_part_001_tagged.xlsx",
+    "output\\chunks\\vigilancia_demais_parametros_part_002_tagged.xlsx",
+    "output\\chunks\\vigilancia_demais_parametros_part_003_tagged.xlsx",
+    "output\\chunks\\vigilancia_demais_parametros_part_004_tagged.xlsx",
+    "output\\chunks\\vigilancia_demais_parametros_part_005_tagged.xlsx"
+  ],
+  "notes": "JSON gerado manualmente a partir dos arquivos em output/chunks/."
+}

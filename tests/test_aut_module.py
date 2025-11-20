@@ -5,14 +5,14 @@ import types
 
 
 def _load_aut_module():
-    stub_name = 'script.python.local_model_utils'
+    stub_name = 'package.python.local_model_utils'
     original = sys.modules.get(stub_name)
     stub = types.ModuleType(stub_name)
     stub.classify_dataframe_with_local_model = lambda df, text_column='texto_bruto': df  # noqa: E731
     sys.modules[stub_name] = stub
     try:
-        sys.modules.pop('script.python.aut', None)
-        return importlib.import_module('script.python.aut')
+        sys.modules.pop('package.python.aut', None)
+        return importlib.import_module('package.python.aut')
     finally:
         if original is None:
             sys.modules.pop(stub_name, None)

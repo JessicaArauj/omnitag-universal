@@ -4,10 +4,10 @@ import json
 
 import pandas as pd
 
-from script.python.save_dashboard_snapshot import save_dashboard_snapshot
+from package.python.save_dashboard_report import save_dashboard_report
 
 
-def test_save_dashboard_snapshot_creates_file(tmp_path):
+def test_save_dashboard_report_creates_file(tmp_path):
     metrics = {
         'backend': 'local',
         'test_size': 0.2,
@@ -30,7 +30,7 @@ def test_save_dashboard_snapshot_creates_file(tmp_path):
         }
     ).to_excel(classified_path, index=False)
 
-    destination = save_dashboard_snapshot(
+    destination = save_dashboard_report(
         metrics_path=metrics_path,
         output_dir=tmp_path,
         classified_data_path=classified_path,
@@ -38,6 +38,6 @@ def test_save_dashboard_snapshot_creates_file(tmp_path):
 
     assert destination.exists()
     content = destination.read_text(encoding='utf-8')
-    assert 'Dashboard Snapshot' in content
+    assert 'Dashboard Report' in content
     assert 'falcon' in content
     assert 'Category Distribution' in content

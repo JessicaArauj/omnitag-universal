@@ -12,7 +12,7 @@ This open-source project classifies SISAGUA water-quality records to estimate wh
 
 ## Fairness and bias
 
-- Monitor label distribution (`inputs/nlp_metrics.json`) to verify that every class has enough samples before retraining.
+- Monitor label distribution (`outputs/nlp_metrics.json`) to verify that every class has enough samples before retraining.
 - When using LLM or Hugging Face backends, log the prompts/responses for spot checks and redact sensitive content before storing long-term artifacts.
 - Review model outputs with a human in the loop; update the category playbook and retrain if biases or systematic errors are identified.
 

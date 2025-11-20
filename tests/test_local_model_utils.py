@@ -18,7 +18,7 @@ def _install_transformers_stub():
 if 'transformers' not in sys.modules:
     _install_transformers_stub()
 
-from script.python import local_model_utils as local
+from package.python import local_model_utils as local
 
 
 def test_render_prompt_replaces_placeholder(monkeypatch):

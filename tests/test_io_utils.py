@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from script.python import io_utils
+from package.python import io_utils
 
 
 def test_expand_candidate_supports_wildcards(tmp_path, monkeypatch):
