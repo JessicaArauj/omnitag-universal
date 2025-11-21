@@ -19,7 +19,6 @@ from .config import (
     OUTPUT_DIR,
     OUTPUT_FILE,
 )
-from .local_model_utils import classify_dataframe_with_local_model
 from .email_utils import send_result_email
 from .hf_api_utils import classify_dataframe_with_hf_api
 from .io_utils import ensure_directories, resolve_input_file
@@ -111,6 +110,8 @@ def run_pipeline(input_path: Path | None = None) -> None:
         )
     elif MODEL_BACKEND == 'local':
         print('Using local transformers pipeline backend.')
+        from .local_model_utils import classify_dataframe_with_local_model
+
         df_classified = classify_dataframe_with_local_model(
             df_prepared,
             text_column='texto_bruto',

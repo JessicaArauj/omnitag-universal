@@ -51,7 +51,7 @@ Each script is idempotent and prints its progress so you can confirm every step 
    - invokes the Hugging Face Space/API (`hf`);
    - calls an Cross-platform endpoint (`llm`);
    - or runs a local `transformers` pipeline (`local`).
-4. **Classification and enrichment**: predictions populate columns such as `Categoria`, `Previsãoo`, `Possibilidade`, `Ação`, `Justificativa`, confidence, and priority score, plus any backend-specific explanations.
+4. **Classification and enrichment**: predictions populate columns such as `Categoria`, `Previsão`, `Possibilidade`, `Ação`, `Justificativa`, confidence, and priority score, plus any backend-specific explanations.
 5. **Artifacts and metrics**: `reporting_utils` writes `output/tagged_file.xlsx`, `outputs/nlp_metrics.json`, and metadata about the chosen model, accuracy, label distribution, and feature importance when available.
 6. **Visualizations and notifications**: `visualization_utils` generates word clouds and category charts; when `EMAIL_ENABLED` is true, `email_utils` emails the enriched Excel file.
 
@@ -235,7 +235,7 @@ flowchart LR
 
 ## Large Spreadsheets
 
-Files like `vigilancia_demais_parametros.xlsx` contain hundreds of thousands of rows. To prototype with smaller batches without modifying the original dataset:
+Files like `vigilancia_demais_parametros.csv` contain hundreds of thousands of rows. To prototype with smaller batches without modifying the original dataset:
 
 ```bash
 ## 1) Download + convert CSV -> XLSX (inputs/vigilancia_demais_parametros.xlsx*)
